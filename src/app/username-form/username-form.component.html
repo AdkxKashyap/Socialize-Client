@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <script
+      src="https://kit.fontawesome.com/fcbe676e7d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container username_form">
+      <div class="row justify-content-center ">
+        <div class="col-lg-6 col-sm-12 col-md-12" id="username_form-modal">
+          <mat-card class="username_form-card">
+            <mat-card-header>
+              <div mat-card-avatar id="headerImage" class="header-image"></div>
+              <mat-card-title>WELCOME!!</mat-card-title>
+              <mat-card-subtitle>{{ userFullName }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+              <form [formGroup]="usernameForm">
+                <div class="form-group">
+                  <mat-form-field class="col-12">
+                    <mat-label><i class="far fa-user"></i> Username:</mat-label>
+                    <input
+                      matInput
+                      placeholder="Enter Your Username"
+                      type="text"
+                      id="username"
+                      (change)="isUsernameAvailable()"
+                      name="username"
+                      formControlName="username"
+                      required
+                    />
+                    <mat-error
+                      *ngIf="
+                        usernameForm.controls.username.invalid &&
+                        (usernameForm.controls.username.dirty ||
+                          usernameForm.controls.username.touched)
+                      "
+                    >
+                      <mat-error
+                        *ngIf="usernameForm.controls.username.errors.required"
+                      >
+                        <p>Name is required.</p>
+                      </mat-error>
+                    </mat-error>
+                    <mat-hint *ngIf="!isUsername_Available">
+                      <p class="text-danger">Username is already taken.</p>
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <mat-form-field class="col-12">
+                    <mat-select
+                      id="profession"
+                      placeholder="Choose Your profession:"
+                      formControlName="profession"
+                    >
+                      <mat-option
+                        *ngFor="let profession of professions"
+                        [value]="profession"
+                        >{{ profession | titlecase }}</mat-option
+                      >
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        usernameForm.controls.profession.invalid &&
+                        (usernameForm.controls.profession.dirty ||
+                          usernameForm.controls.profession.touched)
+                      "
+                    >
+                      <mat-error
+                        *ngIf="usernameForm.controls.profession.errors.required"
+                      >
+                        <p>Profession is required.</p>
+                      </mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <mat-form-field class="col-12">
+                    <mat-select
+                      placeholder="Hobby:"
+                      id="hobbies"
+                      formControlName="hobbies"
+                      multiple
+                    >
+                      <mat-option
+                        [value]="hobby"
+                        *ngFor="let hobby of hobbies"
+                        >{{ hobby | titlecase }}</mat-option
+                      >
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        usernameForm.controls.hobbies.invalid &&
+                        (usernameForm.controls.hobbies.dirty ||
+                          usernameForm.controls.hobbies.touched)
+                      "
+                    >
+                      <mat-error
+                        *ngIf="usernameForm.controls.hobbies.errors.required"
+                      >
+                        <p>Atleast one hobby is required.</p>
+                      </mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </form>
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                mat-button
+                color="accent"
+                type="submit"
+                (click)="submitFormDetails()"
+              >
+                Ok
+              </button>
+            </mat-card-actions>
+          </mat-card>
+
+          <h2 style="font: green;">{{ usernameForm.value | json }}</h2>
+        </div>
+      </div>
+      <!-- ONLY FOR TESTING -->
+      <div *ngIf="error" style="">
+        <h1>{{ error }}</h1>
+      </div>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js" type="text/javascript"></script> -->
+  </body>
+</html>

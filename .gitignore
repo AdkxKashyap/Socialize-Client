@@ -7,8 +7,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
-# dependencies
+# dependenciesenv
 /node_modules
+/src/environments
 
 # profiling files
 chrome-profiler-events*.json
@@ -44,3 +45,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+

@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <!-- fonts -->
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Inria+Serif|Ma+Shan+Zheng&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inria+Serif:700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container " id="container">
+      <div class="row justify-content-center"  style="height: 100%;">
+        <div class="overlay-container col-sm-12 col-lg-6">
+          <div class=" overlay-left">
+            <div class="row justify-content-center overlay-left-text">
+              <div class="col-sm-12 col-lg-6 overlay-left-sign_up_text">
+                <span>Socialize</span>
+              </div>
+              <div class="col-sm-12 col-lg-8 overlay-left-sign_up_tagline_text">
+                <span>where passion meets people</span>
+              </div>
+            </div>
+          </div>
+          <div class="log_in-form">
+            <h1>Contents</h1>
+            <button
+              mat-raised-button
+              color="primary"
+              class="btn-back"
+              (click)="deactivateSlidingWindowClass()"
+            >
+              Back
+            </button>
+          </div>
+        </div>
+
+        <div
+          class=" col-sm-12 col-lg-6 main-form_container"
+          style="padding: 0px; margin: 0px;"
+        >
+          <div  class="form-container  user-action-form">
+            <div class="row justify-content-center googleBtn-row">
+              <div class="col-sm-12 col-lg-9">
+                <button id="googleBtn">
+                  <i class="fab fa-google"></i> Continue with Google
+                </button>
+              </div>
+            </div>
+            <div class="row or-row">
+              <div class="col-sm-12 col-lg-6 or-div">
+                <p class="or-text">--Or--</p>
+              </div>
+            </div>
+
+            <div class="row justify-content-center user-action_btns">
+              <div class=" col-sm-8 col-lg-7 ">
+                <button
+                  class="btns btn-sign_up"
+                  (click)="activateSlidingWindowClass()"
+                >
+                  Sign-Up
+                </button>
+              </div>
+              <div class=" col-sm-12 col-lg-12">
+                <div class="col-12"><br /></div>
+              </div>
+              <div class=" col-sm-8 col-lg-7  ">
+                <button class="btns btn-log_in">
+                  Log-In
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="overlay-right">
+            <div class="row justify-content-center overlay-right-welcome_txt1 ">
+              <div class="col-sm-12 col-lg-9"><p>Hey There!</p></div>
+            </div>
+            <div class="row justify-content-center overlay-right-welcome_txt2">
+              <div class="col-sm-12 col-lg-9">
+                <p>
+                  Fill in some personal details to get started<i
+                    class="far fa-smile"
+                  ></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- <button id="signOut" class="btn-primary" (click)="signOut()">
+    SignOut
+  </button> -->
+</html>

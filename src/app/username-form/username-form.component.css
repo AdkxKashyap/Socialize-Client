@@ -1,0 +1,34 @@
+body{
+  background-image: url("../assets//images/abstract-orange-shapes-or-1920x1080.jpg");
+  background-repeat: no-repeat;
+  
+  
+}
+@media only screen and (min-width: 992px) {
+  body {
+    background-image: url("../assets/images/img4.1.jpg");
+    background-position: 0px 50%;
+  }
+}
+button {
+  border: none;
+  outline: none;
+}
+.header-image {
+  /* background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg"); */
+  background-size: cover;
+}
+.test{
+  background-color:darkgray;
+}
+.input{
+  background: none;
+}
+.username_form{
+  position: relative;
+  top: 25%;
+}
+.username_form-card{
+  opacity: 0.9;
+  box-shadow: 5px 5px 10px black;
+}
