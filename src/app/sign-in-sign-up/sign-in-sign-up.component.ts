@@ -11,11 +11,15 @@ declare const gapi: any;
   styleUrls: ["./sign-in-sign-up.component.css"]
 })
 export class SignInSignUpComponent implements OnInit {
-  container: any;
+  container: Element;
+  issignup:boolean
+  islogin:boolean;
   myLocalStorage=window.localStorage
   existingUser: Boolean;
   ngOnInit() {
     this.googleInit();
+    this.islogin = false;
+    this.issignup = false;
   }
 
   constructor(
@@ -34,10 +38,7 @@ export class SignInSignUpComponent implements OnInit {
   error: any;
   private scope = [
     "profile",
-    "email",
-    "https://www.googleapis.com/auth/plus.me",
-    "https://www.googleapis.com/auth/contacts.readonly",
-    "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    "email"
   ].join(" ");
 
   public async googleInit() {
@@ -73,9 +74,8 @@ export class SignInSignUpComponent implements OnInit {
               }
               this.existingUser = res;
               //check weather user exists in db
-              if (this.existingUser == false) {
+              if (true) {
                 //create a new profle
-                // console.log(this.token)
                 this.ngZone.run(() => {
                   this.router.navigate(["/usernameForm"], {
                     state: {
@@ -88,17 +88,18 @@ export class SignInSignUpComponent implements OnInit {
               }
               if(this.existingUser==true){
                 //redirect to home component
+                // this.router.navigate("/")
               }
               console.log(this.existingUser);
             },
             err => {
               this.error=err.error.error
+              window.location.reload();
               console.log(this.error)
             }
           );
 
-          // console.log('Token || ' + googleUser.getAuthResponse().id_token);
-          // console.log('ID: ' + this.profile.getId());
+        
         },
         function(error) {
           this.error = error.message;
@@ -116,13 +117,25 @@ export class SignInSignUpComponent implements OnInit {
     });
   }
 
-  activateSlidingWindowClass() {
+  activateSlidingWindowClass(event:Event) {
+    const tar = event.target as Element
+   
+    /**If signup btn clicked than display signup form else display login  */
+    if(tar.id == "signup") {
+      console.log(tar.id);
+      this.islogin = false;
+      this.issignup = true;
+    } else if(tar.id == "login") {
+      console.log(tar.id);
+      this.islogin = true;
+      this.issignup = false;
+    }
     this.container.classList.add("sliding_window-active");
   }
   deactivateSlidingWindowClass() {
     this.container.classList.remove("sliding_window-active");
   }
   ngAfterViewInit() {
-    this.container = document.getElementById("container");
+    this.container = document.getElementById("container") as Element;
   }
 }

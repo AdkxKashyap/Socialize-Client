@@ -4,21 +4,82 @@
       
   </head>
   <body>
-  <div>
-    <!--Navbar code goes here-->
-    <form [formGroup]="searchForm">
-      <div class="form-group">
-        <input type="text" class="form-control" id="search" name="search" placeholder="Search Here" (keypress)="search()" formControlName="search">
-        <div class="suggestion-box" *ngIf="suggestions">
-        </div>
-      </div>
-      <button type="submit" (click)="search()" class="btn-primary">Search</button>
-    </form>
+      <!-- Navbar starts -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Humans</a>
+      </li>
+    </ul>
+    <div class="form-inline mr-2"> 
+     
+      <a class="nav-link" href="#">Me</a>
+    </div>
+    <div  class="form-inline my-2 my-lg-0">
+      <button type="button" (click)="openModal()" class="btn btn-success" ><i class="fas fa-search"></i></button>
+    </div>
+    <div class="form-inline ml-2">Login</div>
   </div>
-  <div class="container">
-      
+</nav>
+
+
+    
+
+<div>
+  <div class="backdrop animate__animated animate__fadeIn" *ngIf="activateBackdrop"></div>
+
+  <div class="center-screen">
+    <div class="modal-main "  [ngStyle]="{'display':display}">
+      <mat-card class = "card animate__animated animate__backInDown">
+        <!-- sEarch bar -->
+        <i  (click)="onCloseHandled()" class="close-modal fas fa-times"></i>
+        <mat-card-header class="row">
+          <div id="searchBarDiv" class="col-lg-8 col-sm-12 col-md-9  pl-3">
+            <form [formGroup]="searchForm">
+              <input
+                id="searchBox"
+                
+                type="text"
+                class="table-search_bar"
+                placeholder="Search"
+                formControlName="search"
+              />
+            </form>
+          </div>  
+        </mat-card-header>
+        <!-- Search Results -->
+        <div *ngIf="this.searchForm.value.search != ''">
+          <div *ngIf="suggestions.length == 0" class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        
+          <mat-card-content  *ngFor="let user of suggestions">
+            <mat-card class="animate__animated animate__backInUp">
+              <mat-card-title-group>
+              <mat-card-title>{{user.name}}</mat-card-title>
+              <mat-card-subtitle><i class="fas fa-at"></i> {{user.username}}</mat-card-subtitle>
+              <img style="border-radius: 50%" mat-card-sm-image [src]="user.image" >
+              </mat-card-title-group>
+            </mat-card>
+          </mat-card-content>
+       
+      </mat-card>
+</div>
   </div>
+</div>
+   
+
+  
   
       
   </body>

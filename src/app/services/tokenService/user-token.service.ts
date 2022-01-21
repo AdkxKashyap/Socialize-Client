@@ -8,7 +8,8 @@ export class UserTokenService {
  userToken=localStorage.getItem("token")
   
   constructor() { }
-  getToken():String{
-   return this.userToken
+  getToken():any{
+   return this.userToken == null ? console.log("Token Not found") : this.userToken;   
+    
   }
 }

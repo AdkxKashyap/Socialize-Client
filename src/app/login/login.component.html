@@ -12,8 +12,9 @@
         
                 <div  class="form-group">
                     <mat-form-field  appearance="outline">
-                        <mat-label >Email</mat-label>
-                        <input matInput placeholder="Email" >
+                        <mat-label >ID</mat-label>
+                        <input matInput placeholder="Username/Email" >
+                        <mat-hint>ID can be username or email</mat-hint>
                       </mat-form-field>
                 </div>
 
@@ -24,6 +25,10 @@
                       </mat-form-field>
                 </div>
             </form> 
+            <section class="example-section">
+              <mat-checkbox [(ngModel)]="checked" class="example-margin">Remember Me!</mat-checkbox>
+              <!-- {{checked}} -->
+            </section>
             <mat-card-actions>
                 <button
                 mat-raised-button

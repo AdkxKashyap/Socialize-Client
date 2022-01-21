@@ -17,7 +17,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       // console.log("In Interceptor");
       const oldBody = req.body;
       // console.log(oldBody)
-      const newBody = { ...oldBody, userAuthProvider: "googleAuth" };
+      const newBody = { ...oldBody, "userAuthProvider":this.userAuthProvider };
       const reqClone = req.clone({
         body: newBody,
         headers: req.headers.set("Authorization", "Bearer " + this.token),

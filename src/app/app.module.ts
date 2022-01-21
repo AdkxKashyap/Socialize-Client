@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavBarComponent } from "./nav-bar-component/nav-bar.component";
@@ -30,10 +30,13 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatButtonModule } from "@angular/material/button";
 import { ShowSimilarPeopleComponent } from "./show-similar-people/show-similar-people.component";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { SendFriendRequestService } from './services/sendFriendRequestService/send-friend-request.service';
+import { LoginComponent } from './login/login.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +45,15 @@ import { SendFriendRequestService } from './services/sendFriendRequestService/se
     SignupComponent,
     SignInSignUpComponent,
     UsernameFormComponent,
-    ShowSimilarPeopleComponent
+    ShowSimilarPeopleComponent,
+    LoginComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
@@ -55,7 +61,8 @@ import { SendFriendRequestService } from './services/sendFriendRequestService/se
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCheckboxModule
   ],
   providers: [
     GetSearchResService,

@@ -2,3 +2,81 @@
     background-color: aqua;
     padding: 2px;
 }
+.center-screen{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* min-height: 100vh; */
+    
+}
+.modal-main {
+    width: 50vw;
+    z-index: 1000;
+}
+.backdrop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: cornflowerblue;
+    opacity: 0.5;
+    z-index:999
+}
+.card {
+    max-height: 70vh; 
+    overflow: auto;
+}
+.close-modal {
+    position: absolute;
+    top: 0;
+    right: 2px;
+    color: #FF5252;
+    transition: all 0.2s ease-in;
+}
+.close-modal:hover{
+    color: #C2185B;
+    cursor: pointer;
+}
+/* For search bar */
+.table-search_bar {
+    /* width: 30%; */
+    width: 90%;
+    bottom: 0;
+    height: 2.5em;
+    padding: 0.2em;
+    font-size: 1.2em;
+    border: none;
+  }
+  #searchBarDiv {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(109, 14, 61, 0.959);
+    /* background-color: lightblue; */
+    /* width:35vw; */
+    margin-left: 5vw;
+    margin-bottom: 1.5em;
+    transition: all 0.2s ease-in;
+    border-radius: 0.5em;
+  }
+
+  #searchBox {
+    outline: none;
+    border: none;
+  }
+  #searchBarDiv:hover{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+  #searchClear {
+    position: absolute;
+    right: 2em;
+    top: 1em;
+    color: #6a1b9a;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    visibility: hidden;
+  }
+  #searchClear:hover {
+    color: red;
+  }
+
+  /* Search bar ends */

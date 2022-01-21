@@ -3,22 +3,23 @@ import {User} from '../models/user'
 import {FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GetAllUsernamesService } from '../services/getAllUsernamesService/get-all-usernames.service';
 
-
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class SignupComponent implements OnInit {
+export class LoginComponent implements OnInit {
+
   user:User
   error:any
   signupForm:FormGroup
+  checked:boolean;
   constructor(private fb:FormBuilder,private getAllUsernames:GetAllUsernamesService) { 
     
   }
 
   ngOnInit() {
-    
+    this.checked = false;
     try {
       this.createForm()
     } catch (error) {
@@ -28,13 +29,11 @@ export class SignupComponent implements OnInit {
   }
 
   createForm(){
+    //username can either be the actual username or the email
     this.signupForm=this.fb.group({
-      name:['',[Validators.required]],
       username:['',Validators.required],
-      email:['',Validators.email],
       password:['']
     })
   }
 
-  
 }
