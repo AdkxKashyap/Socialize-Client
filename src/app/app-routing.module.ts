@@ -5,7 +5,7 @@ import { SignInSignUpComponent } from "./sign-in-sign-up/sign-in-sign-up.compone
 import { ShowSimilarPeopleComponent } from "./show-similar-people/show-similar-people.component";
 
 const routes: Routes = [
-  { path: "", component: SignInSignUpComponent },
+  { path: '', component: SignInSignUpComponent },
   { path: "usernameForm", component: UsernameFormComponent },
   { path: "showSimilarPeople", component: ShowSimilarPeopleComponent }
 ];

@@ -18,7 +18,7 @@ body {
 button {
   outline: none;
 }
-@media only screen and (min-width: 992px) {
+
   .container {
     position: relative;
     border-radius: 10px;
@@ -362,7 +362,7 @@ button {
       z-index: 5;
     }
   }
-}
+
 
   .btn-back {
     margin-bottom: 5px;
@@ -385,4 +385,4 @@ button {
     margin-top: 0.8vh;
     margin-left: 0.3vh;
   }
-  
+

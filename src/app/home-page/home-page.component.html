@@ -1,3 +1,44 @@
 <app-nav-bar></app-nav-bar>
-<p>home-page works!</p>
-<h1>HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</h1>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <mat-card>
+        <input
+          class="fake-input"
+          type="text"
+          name=""
+          [placeholder]="fakeInputPlholder"
+        />
+      </mat-card>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+  <!-- user post modal -->
+  <div class="user-post">
+    <mat-card>
+      <div class="row">
+        <mat-form-field class="col-12" appearance="fill">
+          <mat-label>Write Something Here!</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <!-- <input type="file" (onchange)="onFileChange($event, 'image')"/>
+        <button class="col-2 ml-1" mat-raised-button color="primary">Add Image</button> -->
+        <label  class="custom-file-upload col-3 ml-3">
+          <input #imageInput
+          type="file"
+          accept="image/*"
+          (change)="processFile(imageInput)">
+          Add Image
+      </label>
+        <!-- For image preview -->
+        <div class="col-6">
+        </div>
+        <!-- img preview ends -->
+        <button class="col-8 mx-auto mt-5" mat-raised-button color="accent">Post</button>
+      </div>
+    </mat-card>
+  </div>
+  <!-- modal end -->
+</div>
