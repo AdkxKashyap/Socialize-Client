@@ -1,3 +1,4 @@
+
 body {
   /* background-repeat: no-repeat;
   background-image: url("../assets/images/img5.1.jpg");
@@ -27,10 +28,9 @@ button {
       0 10px 10px rgba(0, 0, 0, 0.22); */
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
       rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    position: relative;
     overflow: hidden;
     width: 768px;
-    height: 65%;
+    height: 65vh;
     top: 20%;
   }
   .overlay-container {

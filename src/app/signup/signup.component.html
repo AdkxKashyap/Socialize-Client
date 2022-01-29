@@ -1,42 +1,98 @@
 <html>
-    <head>
-        
-    </head>
-    <body>
-            
-        <div class="container">
-                <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-            <div class="row">
-            <div class="col-lg-12 col-sm-12 ">
-            <form action="submit" [formGroup]="signupForm">
-        
-                <div  class="form-group">
-                    <mat-form-field  appearance="outline">
-                        <mat-label >Email</mat-label>
-                        <input matInput placeholder="Email" >
-                      </mat-form-field>
-                </div>
+  <head> </head>
+  <body>
+    <div class="container">
+      <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <form [formGroup]="signupForm">
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  placeholder="Email"
+                  formControlName="email"
+                  required="true"
+                />
+              </mat-form-field>
 
-                <div  class="form-group">
-                    <mat-form-field appearance="outline">
-                        <mat-label >Password</mat-label>
-                        <input type="password" matInput placeholder="Password">
-                      </mat-form-field>
-                </div>
-            </form> 
-            <mat-card-actions>
-                <button
-                mat-raised-button
-                  
-                  type="submit"
-                  (click)="submitFormDetails()"
+              <span
+                *ngIf="
+                  (signupForm.controls.email.dirty ||
+                    signupForm.controls.email.touched) &&
+                  signupForm.controls.email.errors?.email
+                "
+              >
+                <mat-error *ngIf="signupForm.controls.email.errors?.email"
+                  >Enter valid Email</mat-error
                 >
-                  Ok
-                </button>
-              </mat-card-actions>
-           </div>
+              </span>
+              <span
+                *ngIf="
+                  (submitted || signupForm.controls.email.touched) &&
+                  signupForm.controls.email.invalid
+                "
+              >
+                <mat-error *ngIf="signupForm.controls.email.errors?.required"
+                  >Email Is Required</mat-error
+                >
+              </span>
             </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  placeholder="Password"
+                  required
+                  formControlName="password"
+                />
+              </mat-form-field>
+              
+              <div
+                *ngIf="
+                  (signupForm.controls.password.dirty ||
+                    signupForm.controls.password.touched) &&
+                  signupForm.controls.password.invalid
+                "
+              >
+                <mat-error *ngIf="signupForm.controls.password.errors?.required"
+                  >Password Is Required</mat-error
+                >
+              </div>
+
+              <div
+              *ngIf="
+                (signupForm.controls.password.dirty ||
+                  signupForm.controls.password.touched) &&
+                signupForm.controls.password.invalid
+              "
+            >
+              <mat-error *ngIf="signupForm.controls.password.errors?.minlength"
+                >Minlength is 6.</mat-error
+              >
+            </div>
+            </div>
+
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                type="submit"
+                (click)="submitFormDetails()"
+                [disabled]="signupForm.invalid"
+              >
+              <div *ngIf = "spinnerActive" class="spinner-border text-primary" role="status">
+              </div>
+                <span *ngIf = "spinnerActive==false">Ok</span> 
+              </button>
+              <mat-card *ngIf="signUpError">{{signUpError}}</mat-card>
+            </mat-card-actions>
+          </form>
         </div>
-        
-    </body>
+      </div>
+    </div>
+  </body>
 </html>

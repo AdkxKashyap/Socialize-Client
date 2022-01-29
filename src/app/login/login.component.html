@@ -8,21 +8,45 @@
                 <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
             <div class="row">
             <div class="col-lg-12 col-sm-12 ">
-            <form action="submit" [formGroup]="signupForm">
+            <form action="submit" [formGroup]="loginForm">
         
                 <div  class="form-group">
                     <mat-form-field  appearance="outline">
                         <mat-label >ID</mat-label>
-                        <input matInput placeholder="Username/Email" >
+                        <input formControlName="id" matInput placeholder="Username/Email" >
                         <mat-hint>ID can be username or email</mat-hint>
                       </mat-form-field>
+
+                      <span
+                      *ngIf="
+                        (loginForm.controls.id.dirty ||
+                          loginForm.controls.id.touched) &&
+                        loginForm.controls.id.errors?.required
+                      "
+                    >
+                      <mat-error *ngIf="loginForm.controls.id.errors?.required"
+                        >Username/Email is required</mat-error
+                      >
+                    </span>
                 </div>
 
                 <div  class="form-group">
                     <mat-form-field appearance="outline">
                         <mat-label >Password</mat-label>
-                        <input type="password" matInput placeholder="Password">
+                        <input formControlName="password" type="password" matInput placeholder="Password">
                       </mat-form-field>
+                      
+                      <span
+                      *ngIf="
+                        (loginForm.controls.password.dirty ||
+                          loginForm.controls.password.touched) &&
+                        loginForm.controls.password.errors?.required
+                      "
+                    >
+                      <mat-error *ngIf="loginForm.controls.password.errors?.required"
+                        >Password is required</mat-error
+                      >
+                    </span>
                 </div>
             </form> 
             <section class="example-section">
@@ -35,9 +59,13 @@
                   
                   type="submit"
                   (click)="submitFormDetails()"
+                  [disabled]="loginForm.invalid"
                 >
-                  Ok
+                <div *ngIf = "spinnerActive" class="spinner-border text-primary" role="status">
+                </div>
+                <span *ngIf = "spinnerActive==false">Ok</span> 
                 </button>
+                <mat-card *ngIf="loginerr">{{loginerr}}</mat-card>
               </mat-card-actions>
            </div>
             </div>

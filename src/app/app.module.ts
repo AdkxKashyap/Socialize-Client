@@ -37,6 +37,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { SendFriendRequestService } from './services/sendFriendRequestService/send-friend-request.service';
 import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { SignUpService } from "./services/signUpService/sign-up.service";
+import { LoginService } from "./services/loginService/login.service";
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     SendUserProfileService,
     GetUsersByHobbiesAndProfessionService,
     UserTokenService,
+    SignUpService,
+    LoginService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptorService,

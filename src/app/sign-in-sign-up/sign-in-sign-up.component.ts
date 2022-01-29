@@ -116,6 +116,8 @@ export class SignInSignUpComponent implements OnInit {
       console.log("User signed out.");
     });
   }
+/**Google sign in ends */
+
 
   activateSlidingWindowClass(event:Event) {
     const tar = event.target as Element

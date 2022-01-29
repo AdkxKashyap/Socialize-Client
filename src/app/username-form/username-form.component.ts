@@ -9,11 +9,12 @@ import { GetProfessionsService } from "../services/getAllProfessionsService/get-
 import { GetHobbiesService } from "../services/getHobbiesService/get-hobbies.service";
 import { GeneratePasswordService } from "../services/generatePasswordService/generate-password.service";
 import { SendUserProfileService } from "../services/sendUserProfile/send-user-profile.service";
+import { UserTokenService } from "../services/tokenService/user-token.service";
 
 @Component({
   selector: "app-username-form",
   templateUrl: "./username-form.component.html",
-  styleUrls: ["./username-form.component.css"]
+  styleUrls: ["./username-form.component.css"],
 })
 export class UsernameFormComponent implements OnInit {
   usernameForm: FormGroup;
@@ -43,23 +44,31 @@ export class UsernameFormComponent implements OnInit {
     private getProfessions: GetProfessionsService,
     private getHobbies: GetHobbiesService,
     private generatePassword: GeneratePasswordService,
-    private sendUserProfile: SendUserProfileService
+    private sendUserProfile: SendUserProfileService,
+    private tokenService: UserTokenService
   ) {
     this.userProfile = this.router.getCurrentNavigation().extras.state.profile;
-    this.userAuthProvider = this.router.getCurrentNavigation().extras.state.userAuthProvider;
-    this.token = this.router.getCurrentNavigation().extras.state.userAuthProvider;
+    this.userAuthProvider =
+      this.router.getCurrentNavigation().extras.state.userAuthProvider;
+    this.token = tokenService.getToken();
   }
 
   ngOnInit() {
     this.createUsernameForm();
     this.getAllProfessions();
     this.getAllHobbies();
-    // this.profileInfo = JSON.parse(this.sessionStorage.getItem("googleProfile"));
-    // console.log(this.profileInfo);
-    this.userFullName = this.userProfile.getName();
-    this.userProfileImageURL = this.userProfile.getImageUrl();
-    document.getElementById("headerImage").style.backgroundImage =
-      "url('" + this.userProfileImageURL + "')";
+
+    if (this.userAuthProvider == "default") {
+      this.userFullName = this.userProfile.usernametmp;
+      this.userProfileImageURL = this.userProfile.tmpImageURL;
+      document.getElementById("headerImage").style.backgroundImage =
+        "url('" + this.userProfileImageURL + "')";
+    } else {
+      this.userFullName = this.userProfile.getName();
+      this.userProfileImageURL = this.userProfile.getImageUrl();
+      document.getElementById("headerImage").style.backgroundImage =
+        "url('" + this.userProfileImageURL + "')";
+    }
 
     //generate password if userAuthProvider !default
     if (this.userAuthProvider !== "default") {
@@ -72,7 +81,7 @@ export class UsernameFormComponent implements OnInit {
     this.usernameForm = this.fb.group({
       username: ["", [Validators.required]],
       profession: ["", [Validators.required]],
-      hobbies: ["", [Validators.required]]
+      hobbies: ["", [Validators.required]],
     });
   }
 
@@ -81,16 +90,16 @@ export class UsernameFormComponent implements OnInit {
     this.getAllUsernames
       .getUsernames(this.usernameForm.value.username)
       .subscribe(
-        usernames => {
+        (usernames) => {
           const myUsername = this.usernameForm.value.username;
-          usernames.forEach(val => {
+          usernames.forEach((val) => {
             if (myUsername == val.username) {
               this.isUsername_Available = false;
             }
           });
           // console.log(this.isUsername_Available)
         },
-        err => {
+        (err) => {
           this.error = err.message;
         }
       );
@@ -98,16 +107,16 @@ export class UsernameFormComponent implements OnInit {
 
   getAllProfessions() {
     this.getProfessions.getProfessions().subscribe(
-      professions => {
+      (professions) => {
         this.professions = professions;
       },
-      err => {
+      (err) => {
         this.error = err.message;
       }
     );
   }
   getAllHobbies() {
-    this.getHobbies.getHobbies().subscribe(hobbies => {
+    this.getHobbies.getHobbies().subscribe((hobbies) => {
       this.hobbies = hobbies;
     });
   }
@@ -126,20 +135,23 @@ export class UsernameFormComponent implements OnInit {
         password: this.password,
         userAuthProvider: this.userAuthProvider,
         token: this.token,
-        hobbies: this.usernameForm.value.hobbies
+        hobbies: this.usernameForm.value.hobbies,
       };
       // console.log(this.completeUserProfile)
       this.sendUserProfile.sendProfile(this.completeUserProfile).subscribe(
         () => {
-          this.myLocalstorage.setItem("username",this.usernameForm.value.username)
+          this.myLocalstorage.setItem(
+            "username",
+            this.usernameForm.value.username
+          );
           this.router.navigate(["/showSimilarPeople"], {
             state: {
               profession: this.usernameForm.value.profession,
-              hobbies: this.usernameForm.value.hobbies
-            }
+              hobbies: this.usernameForm.value.hobbies,
+            },
           });
         },
-        err => {
+        (err) => {
           this.error = err.error.error;
           // this.error=err.message
           // throw new Error(err.message)

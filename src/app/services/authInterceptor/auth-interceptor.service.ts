@@ -13,7 +13,8 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: import("@angular/common/http").HttpRequest<any>,
     next: import("@angular/common/http").HttpHandler
   ): import("rxjs").Observable<import("@angular/common/http").HttpEvent<any>> {
-    if (this.token) {
+    
+    if (req.url.indexOf("signup")== -1 && req.url.indexOf("login")== -1 && this.token) {
       // console.log("In Interceptor");
       const oldBody = req.body;
       // console.log(oldBody)
