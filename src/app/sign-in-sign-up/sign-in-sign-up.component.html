@@ -17,12 +17,12 @@
         <h1>Sorry! Currently Mobile devices are not supported.</h1>
       </mat-card>
     </div>
-    <div class="container " id="container">
+
+    <div class="container" id="container">
       <!-- -->
-      <div class="row justify-content-center"  style="height: 100%;">
-        <!-- <h1>Hlskdlskd</h1>  -->
+      <div class="row justify-content-center" style="height: 100%">
         <div class="overlay-container col-sm-12 col-lg-6">
-          <div class=" overlay-left">
+          <div class="overlay-left">
             <div class="row justify-content-center overlay-left-text">
               <div class="col-sm-12 col-lg-6 overlay-left-sign_up_text">
                 <span>Socialize</span>
@@ -42,16 +42,20 @@
             >
               Back
             </button>
-            <mat-card *ngIf="issignup" id="user-form" class="sign-up_card"><app-signup></app-signup></mat-card>
-            <mat-card *ngIf="islogin" id="user-form" class="sign-up_card"><app-login></app-login></mat-card>
+            <mat-card *ngIf="issignup" id="user-form" class="sign-up_card"
+              ><app-signup></app-signup
+            ></mat-card>
+            <mat-card *ngIf="islogin" id="user-form" class="sign-up_card"
+              ><app-login></app-login
+            ></mat-card>
           </div>
         </div>
 
         <div
-          class=" col-sm-12 col-lg-6 main-form_container"
-          style="padding: 0px; margin: 0px;"
+          class="col-sm-12 col-lg-6 main-form_container"
+          style="padding: 0px; margin: 0px"
         >
-          <div  class="form-container  user-action-form">
+          <div class="form-container user-action-form">
             <div class="row justify-content-center googleBtn-row">
               <div class="col-sm-12 col-lg-9">
                 <button id="googleBtn">
@@ -66,7 +70,7 @@
             </div>
 
             <div class="row justify-content-center user-action_btns">
-              <div class=" col-sm-8 col-lg-7 ">
+              <div class="col-sm-8 col-lg-7">
                 <button
                   id="signup"
                   class="btns btn-sign_up"
@@ -75,14 +79,14 @@
                   Sign-Up
                 </button>
               </div>
-              <div class=" col-sm-12 col-lg-12">
+              <div class="col-sm-12 col-lg-12">
                 <div class="col-12"><br /></div>
               </div>
-              <div class=" col-sm-8 col-lg-7  ">
-                <button 
+              <div class="col-sm-8 col-lg-7">
+                <button
                   id="login"
-                class="btns btn-log_in"
-                (click)="activateSlidingWindowClass($event)"
+                  class="btns btn-log_in"
+                  (click)="activateSlidingWindowClass($event)"
                 >
                   Log-In
                 </button>
@@ -91,16 +95,12 @@
           </div>
 
           <div class="overlay-right">
-            <div class="row justify-content-center overlay-right-welcome_txt1 ">
+            <div class="row justify-content-center overlay-right-welcome_txt1">
               <div class="col-sm-12 col-lg-12"><p>Hey Human!</p></div>
             </div>
             <div class="row justify-content-center overlay-right-welcome_txt2">
               <div class="col-sm-12 col-lg-9">
-                <p>
-                  Welcome To Socialize<i
-                    class="far fa-smile"
-                  ></i>
-                </p>
+                <p>Welcome To Socialize<i class="far fa-smile"></i></p>
               </div>
             </div>
           </div>
