@@ -30,7 +30,7 @@
               </span>
               <span
                 *ngIf="
-                  (submitted || signupForm.controls.email.touched) &&
+                  (signupForm.controls.email.touched) &&
                   signupForm.controls.email.invalid
                 "
               >
